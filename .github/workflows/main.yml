@@ -28,6 +28,7 @@ jobs:
 
   build_and_push:
     name: build and push
+    needs: static
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -56,6 +57,7 @@ jobs:
   
   ui_tests:
     name: e2e tests
+    needs: build_and_push
     runs-on: ubuntu-latest
     permissions:
       packages: write
