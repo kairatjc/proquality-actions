@@ -26,10 +26,7 @@ jobs:
       - name: linter
         run: npm run lint
 
-      - name: linter
-        run: npm run unit
-
-      - name: linter
+      - name: unit tests
         run: npm run unit
 
       - name: Login to GitHub Container Registry
@@ -46,3 +43,6 @@ jobs:
 
       - name: e2e tests
         run: docker run ghcr.io/kairatjc/proquality-actions:latest e2e
+      
+      - name: flaky tests
+        run: docker run ghcr.io/kairatjc/proquality-actions:latest flaky
