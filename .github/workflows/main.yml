@@ -27,7 +27,7 @@ jobs:
         run: npm run lint
 
   build_and_push:
-    name: Push Docker image to multiple registries
+    name: build and push
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -47,6 +47,22 @@ jobs:
         run: |
           docker build . --tag ghcr.io/kairatjc/proquality-actions:latest
           docker push ghcr.io/kairatjc/proquality-actions:latest
+
+      - name: e2e tests
+        run: docker run ghcr.io/kairatjc/proquality-actions:latest e2e
+      
+      - name: flaky tests
+        run: docker run ghcr.io/kairatjc/proquality-actions:latest flaky
+  
+  e2e tests:
+    name: e2e tests
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
 
       - name: e2e tests
         run: docker run ghcr.io/kairatjc/proquality-actions:latest e2e
