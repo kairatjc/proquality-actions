@@ -54,7 +54,7 @@ jobs:
       - name: flaky tests
         run: docker run ghcr.io/kairatjc/proquality-actions:latest flaky
   
-  e2e tests:
+  ui_tests:
     name: e2e tests
     runs-on: ubuntu-latest
     permissions:
