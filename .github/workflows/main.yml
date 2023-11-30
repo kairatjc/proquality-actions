@@ -48,12 +48,6 @@ jobs:
         run: |
           docker build . --tag ghcr.io/kairatjc/proquality-actions:latest
           docker push ghcr.io/kairatjc/proquality-actions:latest
-
-      - name: e2e tests
-        run: docker run ghcr.io/kairatjc/proquality-actions:latest e2e
-      
-      - name: flaky tests
-        run: docker run ghcr.io/kairatjc/proquality-actions:latest flaky
   
   ui_tests:
     name: e2e tests
